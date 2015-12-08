@@ -1,0 +1,40 @@
+﻿@model PartyInvites.Models.GuestResponse
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="Content/bootstrap-theme.min.css" />
+
+    <title>RsvpForm</title>
+</head>
+<body>
+    <!--you don't need to provide any params in this case@using (Html.BeginForm("RsvpForm", "Home"))-->
+    @using (Html.BeginForm())
+    {
+        <div> 
+            <h1>
+                RSVP Form
+            </h1>
+            <p>@Html.ValidationSummary()</p>
+            <p>Your Name: @Html.TextBoxFor(x => x.Name) <i>@Html.ValidationMessageFor(x=>x.Name)</i></p>
+            <p>Your Email: @Html.TextBoxFor(x => x.Email)</p>
+            <p>Your Phone: @Html.TextBoxFor(x => x.Phone)</p>
+        
+            <p>Will You Attend? 
+            @Html.DropDownListFor(x => x.WillAttend, new[] { new SelectListItem() { Text = "Yes I'll be there", Value = bool.TrueString },
+                                                             new SelectListItem() { Text = "No, I can' come", Value = bool.FalseString }
+                                                           }, "Choose an option" )
+            </p>
+            <input type="submit" value="Submit RSVP" />
+        </div>   
+    }
+</body>
+</html>
