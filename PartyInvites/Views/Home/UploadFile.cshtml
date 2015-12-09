@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Title = "File Upload in MVC3 By Using Razor";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UploadFile</title>
+</head>
+<body>
+    <div> 
+        <h1>Uploading Files using MVC3</h1>
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div>
+                <b><u>File Upload in MVC3 By Using Razor</u></b>
+                Select Image
+                <input type="file" name="file" />&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="Upload Image" name="Command" /><br />
+            </div>
+            <div>
+                @ViewBag.Message
+            </div>
+        }
+
+    </div>
+</body>
+</html>
